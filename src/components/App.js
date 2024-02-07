@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
-import NavBar from "./NavBar";
-import MoviesPage from "./MoviesPage";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MoviesPage from "./components/MoviesPage";
 
 function App() {
   const [movies, setMovies] = useState([
@@ -11,17 +10,18 @@ function App() {
   ]);
 
   return (
-    <div>
-      <NavBar />
-      <Switch>
-        <Route path="/movies">
-          <MoviesPage movies={movies} />
-        </Route>
-        <Route exact path="/">
-          <div>Home</div>
-        </Route>
-      </Switch>
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/movies">
+            <MoviesPage movies={movies} />
+          </Route>
+          <Route exact path="/">
+            <div>Home</div>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
